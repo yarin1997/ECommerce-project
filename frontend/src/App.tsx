@@ -1,27 +1,38 @@
 
-import './App.css'
-import { sampleProducts } from './data'
+import { Outlet } from 'react-router-dom'
+import './index.css'
+// import { sampleProducts } from './data'
+import { Container, Nav, Navbar  } from 'react-bootstrap'
 
 function App() {
   
 
   return (
-    <div>
-      <header>TS Amazona</header>
+    <div className="d-flex flex-column vh-100">
+      <header>
+        TS Amazona
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <Container>
+            <Navbar.Brand>Amazona</Navbar.Brand>
+          </Container>
+          <Nav>
+            <a href="/cart" className="nav-link">
+              Cart
+            </a>
+            <a href="/signIn" className="nav-link">
+              sign in
+            </a>
+          </Nav>
+        </Navbar>
+      </header>
       <main>
-        {sampleProducts.map((product) => (
-          <li key={product.slug}>
-            <img
-              src={product.image}
-              alt="product image"
-              className="product-image"
-            />
-            <h2>{product.name}</h2>
-            <p> Price: {product.price}$</p>
-          </li>
-        ))}
+        <Container className="mt-3">
+         <Outlet/>
+        </Container>
       </main>
-      <footer>All right reserved</footer>
+      <footer className='text-center'>
+        <div>All right reserved</div>
+      </footer>
     </div>
   )
 }
